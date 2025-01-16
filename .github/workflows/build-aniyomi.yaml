@@ -8,6 +8,10 @@ on:
         description: "Git repository URL"
         required: true
         default: "https://github.com/aniyomiorg/aniyomi"
+      branchname:
+        description: "Branch name for the build (e.g., feature/new-feature)"
+        required: true
+        default: "mater"
       jdkVersion:
         description: "OpenJDK version to use: 8 / 11 / 17 etc."
         required: false
@@ -28,7 +32,7 @@ jobs:
           java-version: ${{ github.event.inputs.jdkVersion }}
 
       - name: Clone project
-        run: git clone ${{ github.event.inputs.repository }} workspace
+        run: git clone -b  --single-branch ${{ github.event.inputs.repository }} workspace
 
       - name: Build APK
         working-directory: ./workspace
