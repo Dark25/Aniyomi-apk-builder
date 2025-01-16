@@ -32,7 +32,7 @@ jobs:
           java-version: ${{ github.event.inputs.jdkVersion }}
 
       - name: Clone project
-        run: git clone -b  --single-branch ${{ github.event.inputs.repository }} workspace
+        run: git clone -b ${{ github.event.inputs.branchname }} --single-branch ${{ github.event.inputs.repository }} workspace
 
       - name: Build APK
         working-directory: ./workspace
